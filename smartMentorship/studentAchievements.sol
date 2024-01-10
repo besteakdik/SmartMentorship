@@ -16,11 +16,11 @@ contract studentAchievements {
     //     _;
     // }
 
-    modifier onlyMatchedMentor() {
-        (address mentorAddress, , bool isMatched) = userProfileContract.getMatchInfo(); //userProfile'dan bilgileri alıp eşleşip eşleşmediğine bakıcaz
-        require(isMatched && msg.sender == mentorAddress, "Not authorized"); //eğer eşleşme varsa ve sözleşmeyi çağıran ve mentor adresi aynıysa, değilse not auth
-        _; //koşullar sağlandığında fonksiyonun geri kalanı çalışsın
-    }
+    //modifier onlyMatchedMentor() {
+        //(address mentorAddress, , bool isMatched) = userProfileContract.getMatchInfo(); //userProfile'dan bilgileri alıp eşleşip eşleşmediğine bakıcaz
+        //require(isMatched && msg.sender == mentorAddress, "Not authorized"); //eğer eşleşme varsa ve sözleşmeyi çağıran ve mentor adresi aynıysa, değilse not auth
+        //_; //koşullar sağlandığında fonksiyonun geri kalanı çalışsın
+    //}
 
     struct Achievement {
         string description; // başarının açıklaması
