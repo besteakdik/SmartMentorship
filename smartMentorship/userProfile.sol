@@ -20,7 +20,7 @@ contract userProfile {
         bool isMatched;
     }
 
-    mapping(address => Mentor) public mentors; //mentors adında adress keyinden Mentor valuelarını işaret eden mappingler 
+    mapping(address => Mentor) public mentors; //mentors adında adress keyinden Mentor valuelarını işaret eden mappingler
     mapping(address => Student) public students;
     mapping(address => bool) public registered;
     mapping(address => Match) public matches;
@@ -43,28 +43,29 @@ contract userProfile {
         student.name = _name;
         student.interest = _interest;
         registered[msg.sender] = true;
-
     }
 
     function matchMentorStudent(address _mentorAddress) public {
         require(registered[msg.sender], "Student not registered.");
-        require(mentors[_mentorAddress].mentorAddress != address(0), "Mentor not found");
+        require(mentors[_mentorAddress].mentorAddress != address(0),"Mentor not found");
 
-        require(keccak256(bytes(students[msg.sender].interest)) == 
-        keccak256(bytes(mentors[_mentorAddress].expertise)), "Interest and expertise do not match"); // öğrencinin interestleriyle mentorların expertise'ları uyuyor mu
+        require(
+            keccak256(bytes(students[msg.sender].interest)) ==
+                keccak256(bytes(mentors[_mentorAddress].expertise)),
+            "Interest and expertise do not match"
+        ); // öğrencinin interestleriyle mentorların expertise'ları uyuyor mu
 
         matches[msg.sender] = Match(_mentorAddress, msg.sender, true); // öğrenci ve mentor arasındaki eşleşmeyi temsil eden yapı, true eşleşme olduğunu gösteriyor
         //msg.sender öğrencinin Ethereum adresi, bu mapping içinde öğrenciye ait eşleşme bilgilerini tutar
         //matches mappingine bu eşleşmeyi ekler
     }
 
-    function getMatchInfo() public view returns (address, address, bool) {
+    function getMatchInfo()public view returns (address, address, bool) {
         Match memory matchInfo = matches[msg.sender];
         return (matchInfo.mentorAddress, matchInfo.studentAddress, matchInfo.isMatched);
     }
 
-    function isRegistered() public view returns(bool) {
+    function isRegistered() public view returns (bool) {
         return registered[msg.sender];
     }
-
 }

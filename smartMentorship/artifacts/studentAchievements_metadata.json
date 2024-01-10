@@ -1,0 +1,205 @@
+{
+	"compiler": {
+		"version": "0.8.22+commit.4fc1097e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_userProfileAddress",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "mentorAddress",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "studentAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "achievementIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "AchievementApproved",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "studentAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "description",
+						"type": "string"
+					}
+				],
+				"name": "AchievementRecorded",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_studentAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_achievementIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "approveAchievement",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_studentAddress",
+						"type": "address"
+					}
+				],
+				"name": "getStudentAchievementsList",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "description",
+								"type": "string"
+							},
+							{
+								"internalType": "bool",
+								"name": "isApproved",
+								"type": "bool"
+							}
+						],
+						"internalType": "struct studentAchievements.Achievement[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_studentAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "_description",
+						"type": "string"
+					}
+				],
+				"name": "recordAchievement",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "studentAchievementsList",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "description",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "isApproved",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"smartMentorship/studentAchievements.sol": "studentAchievements"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"smartMentorship/studentAchievements.sol": {
+			"keccak256": "0x941ec78d9b46d7e608b4171f720194ddb3caddb9ccc4d6e9f1b704a83b7b99ec",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://cb4e6bc640d59b15e74fc28749bf5547106757b4f1cba6ec5abd6bf8e05a8251",
+				"dweb:/ipfs/QmbVBUw1Hzzy4HQ9jHRRPfHppTAUKyxpWpbFuM1R7wTiQU"
+			]
+		},
+		"smartMentorship/userProfile.sol": {
+			"keccak256": "0xee0231445d7f0d41bb5ac212aba86fd2258dc0dbc1816efa52f51e22b00d9150",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://dc966f73c4e0105dfef9c5d3363ede7f04821993ef01b442ddd173e0ebf2a081",
+				"dweb:/ipfs/QmWQUVKaEhx2aE7x7gVJD62yMKBbWjHLUb6hcEV4bC91xi"
+			]
+		}
+	},
+	"version": 1
+}
