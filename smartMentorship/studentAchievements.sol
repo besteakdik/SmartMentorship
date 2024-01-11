@@ -16,11 +16,11 @@ contract studentAchievements {
     //     _;
     // }
 
-    //modifier onlyMatchedMentor() {
-        //(address mentorAddress, , bool isMatched) = userProfileContract.getMatchInfo(); //userProfile'dan bilgileri alıp eşleşip eşleşmediğine bakıcaz
-        //require(isMatched && msg.sender == mentorAddress, "Not authorized"); //eğer eşleşme varsa ve sözleşmeyi çağıran ve mentor adresi aynıysa, değilse not auth
-        //_; //koşullar sağlandığında fonksiyonun geri kalanı çalışsın
-    //}
+    // modifier onlyMatchedMentor() {
+    //     (address mentorAddress, , bool isMatched) = userProfileContract.getMatchInfo(); //userProfile'dan bilgileri alıp eşleşip eşleşmediğine bakıcaz
+    //     require(isMatched && msg.sender == mentorAddress, "Not authorized"); //eğer eşleşme varsa ve sözleşmeyi çağıran ve mentor adresi aynıysa, değilse not auth
+    //     _; //koşullar sağlandığında fonksiyonun geri kalanı çalışsın
+    // }
 
     struct Achievement {
         string description; // başarının açıklaması
@@ -32,12 +32,12 @@ contract studentAchievements {
     event AchievementRecorded(address indexed studentAddress, string description);
     event AchievementApproved(address indexed mentorAddress, address indexed studentAddress, uint256 achievementIndex);
 
-    function recordAchievement(address _studentAddress, string memory _description) public onlyMatchedMentor {
+    function recordAchievement(address _studentAddress, string memory _description) public  {
         studentAchievementsList[_studentAddress].push(Achievement(_description, false));
         emit AchievementRecorded(_studentAddress, _description);
     }
 
-    function approveAchievement(address _studentAddress, uint256 _achievementIndex) public onlyMatchedMentor {
+    function approveAchievement(address _studentAddress, uint256 _achievementIndex) public  {
         require(_achievementIndex < studentAchievementsList[_studentAddress].length, "Invalid achievement index");
         require(!studentAchievementsList[_studentAddress][_achievementIndex].isApproved, "Achievement already approved");
 

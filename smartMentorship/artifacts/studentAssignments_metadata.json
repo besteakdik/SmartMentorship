@@ -1,0 +1,156 @@
+{
+	"compiler": {
+		"version": "0.8.22+commit.4fc1097e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "assignmentId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "mentorAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "studentAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "description",
+						"type": "string"
+					}
+				],
+				"name": "AssignmentCreated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "assignmentId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "enum studentAssignments.AssignmentStatus",
+						"name": "status",
+						"type": "uint8"
+					}
+				],
+				"name": "AssignmentStatusUpdated",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "assignmentCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "assignments",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "assignmentId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "mentorAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "studentAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "description",
+						"type": "string"
+					},
+					{
+						"internalType": "enum studentAssignments.AssignmentStatus",
+						"name": "status",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"smartMentorship/studentAssignments.sol": "studentAssignments"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"smartMentorship/studentAssignments.sol": {
+			"keccak256": "0x1cb3c18b40d00225d455ee404d3054b88135beeab6ad568076d391d2a7860f04",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://a1c502a3430cf15edbff98d30c2760638b2d1cbb8381250d24df4629d7e9dea8",
+				"dweb:/ipfs/QmQuFovosN4E3QoRXqZvLp3Yd2PhULBNKeRQ5XC5Wxt1Jb"
+			]
+		},
+		"smartMentorship/userProfile.sol": {
+			"keccak256": "0xee0231445d7f0d41bb5ac212aba86fd2258dc0dbc1816efa52f51e22b00d9150",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://dc966f73c4e0105dfef9c5d3363ede7f04821993ef01b442ddd173e0ebf2a081",
+				"dweb:/ipfs/QmWQUVKaEhx2aE7x7gVJD62yMKBbWjHLUb6hcEV4bC91xi"
+			]
+		}
+	},
+	"version": 1
+}
