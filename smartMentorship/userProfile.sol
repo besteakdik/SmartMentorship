@@ -60,7 +60,7 @@ contract userProfile {
         //matches mappingine bu eşleşmeyi ekler
     }
 
-    function getMatchInfo()public view returns (address, address, bool) {
+    function getMtachInfo()public view returns (address, address, bool) {
         Match memory matchInfo = matches[msg.sender];
         return (matchInfo.mentorAddress, matchInfo.studentAddress, matchInfo.isMatched);
     }

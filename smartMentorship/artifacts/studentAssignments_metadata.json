@@ -6,6 +6,17 @@
 	"output": {
 		"abi": [
 			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_userProfileAddress",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
 				"anonymous": false,
 				"inputs": [
 					{
@@ -106,6 +117,88 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_description",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "_studentAddress",
+						"type": "address"
+					}
+				],
+				"name": "createAssignment",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_assignmentId",
+						"type": "uint256"
+					}
+				],
+				"name": "getAssignment",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "assignmentId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address",
+								"name": "mentorAddress",
+								"type": "address"
+							},
+							{
+								"internalType": "address",
+								"name": "studentAddress",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "description",
+								"type": "string"
+							},
+							{
+								"internalType": "enum studentAssignments.AssignmentStatus",
+								"name": "status",
+								"type": "uint8"
+							}
+						],
+						"internalType": "struct studentAssignments.Assignment",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_assignmentId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "enum studentAssignments.AssignmentStatus",
+						"name": "_status",
+						"type": "uint8"
+					}
+				],
+				"name": "updateAssignmentStatus",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -136,11 +229,11 @@
 	},
 	"sources": {
 		"smartMentorship/studentAssignments.sol": {
-			"keccak256": "0x1cb3c18b40d00225d455ee404d3054b88135beeab6ad568076d391d2a7860f04",
+			"keccak256": "0x1af74c2b011c82812ed91f3bbe2a12c7d7a8bc4c5af04269765b5236b9414e3c",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://a1c502a3430cf15edbff98d30c2760638b2d1cbb8381250d24df4629d7e9dea8",
-				"dweb:/ipfs/QmQuFovosN4E3QoRXqZvLp3Yd2PhULBNKeRQ5XC5Wxt1Jb"
+				"bzz-raw://d8a8c39447dbc75a841028ffa8f139fc636a4fd1f2290d2d94c7d05a5db534a3",
+				"dweb:/ipfs/QmafSViVJgRHJEWWJ96DsaiHkkuqkC6ro9HbA42h9rwKUb"
 			]
 		},
 		"smartMentorship/userProfile.sol": {
