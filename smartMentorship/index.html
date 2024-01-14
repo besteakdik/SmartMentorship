@@ -66,13 +66,16 @@
             <form id="approveAchievement" method="GET" onsubmit="return false;">
                 <div id="achievement">
                     <input id="studentAddress" type="text" placeholder="Enter The Student Address"><br>
-                    <input id="achievementIndex" type="number" placeholder="Enter The Achievement Index"><br>
+                    <input id="achievementIndex" type="text" placeholder="Enter The Achievement Description"><br>
                 </div>
                 <button id="approveAchievementbtn" onclick="approveAchievement()">Approve Achievement</button>
             </form>
             <form id="createAssignment" method="GET" onsubmit="return false;">
-                <input id="assignmentLecture" type="text" placeholder="Enter The Assignment"><br><br>
+                <input id="studentAddress" type="text" placeholder="Enter The Student Address"><br>
+                <input id="assignmentLecture" type="text" placeholder="Enter The Assignment Description"><br><br>
                 <button id="createAssignmentbtn" onclick="createAssignment()">Create Assignment</button> <br>
+                <input id="studentAddress" type="text" placeholder="Enter The Student Address"><br>
+                <input id="achievementIndex" type="text" placeholder="Enter The Assignment Index"><br>
                 <button id="updateAssignmentStatusbtn" onclick="updateAssignmentStatus()">Update Assignment
                     Status</button><br>
             </form>
@@ -80,7 +83,9 @@
                 <input id="achievementStudentAddress" type="text" placeholder="Enter The Student Address"><br>
                 <input id="achievementDescription" type="text" placeholder="Enter The Description"><br>
                 <button id="createAchievementbtn" onclick="createAchievement()">Record Achievement</button><br>
-                <button id="updateAchievementStatusbtn" onclick="updateAchievementStatus()">Update Achievement
+                <input id="studentAddress" type="text" placeholder="Enter The Student Address"><br>
+                <input id="achievementIndex" type="text" placeholder="Enter The Achievement Index"><br>
+                <button id="updateAchievementStatusbtn" onclick="updateAchievementStatus()">Approve Achievement
                     Status</button><br>
             </form>
         </div>
@@ -515,7 +520,6 @@
         }
     </script>
 
-    <script src="script.js"></script>
 
 </body>
 
