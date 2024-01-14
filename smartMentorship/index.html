@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartMentorship</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1><i class="fa-solid fa-school fa-2x"></i><br>SmartMentorship</h1>
+    </header>
+    <nav>
+        <a href="#">Metamask</a>
+        <a href="#">Registration</a>
+        <a href="#">Assignments/Achievements</a>
+    </nav>
+    <div class="container">
+        <div class="container-left">
+            <div class="container-connect">
+                <button onclick="connectMetamask()">CONNECT TO METAMASK</button> <br>
+                <p id="accountArea"></p>
+                <button onclick="connectContract()">CONNECT TO CONTRACT</button> <br>
+                <p id="contractArea"></p>
+                <button onclick="readContract()">GET DATA FROM CONTRACT</button> <br>
+                <p id="dataArea"></p>
+            </div>
+            <div class="container-match">
+                <form id="matchMentorStudent" method="GET" onsubmit="return false;">
+                    <div id="match">
+                        <input id="mentorAddress" type="text" placeholder="Enter The Mentor Address"><br>
+                    </div>
+                    <button id="matchMentorStudentbtn" onclick="matchMentorStudent()">Match Mentor Student</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="container-mid">
+            <div class="container-add">
+                <form id="studentForm" method="GET" onsubmit="return false;">
+                    <div id="studentInformations">
+                        <input id="studentName" type="text" placeholder="Enter The Name">
+                        <input id="studentAddress" type="text" placeholder="Enter The Address">
+                        <input id="studentInterest" type="text" placeholder="Enter The Interest">
+                        <button id="registerAsStudent" onclick="connectContractRegisterAsStudent()">Register As
+                            Student</button>
+                    </div>
+
+                </form>
+                <form id="mentorForm" method="GET" onsubmit="return false;">
+                    <div id="mentorInformations">
+                        <input id="mentorName" type="text" placeholder="Enter The Name">
+                        <input id="mentorAddress" type="text" placeholder="Enter The Address">
+                        <input id="mentorExpertise" type="text" placeholder="Enter The Expertise">
+                        <button id="registerAsMentor" onclick="registerAsMentor()">Register As Mentor</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <div class="container-right">
+            <form id="approveAchievement" method="GET" onsubmit="return false;">
+                <div id="achievement">
+                    <input id="studentAddress" type="text" placeholder="Enter The Student Address"><br>
+                    <input id="achievementIndex" type="number" placeholder="Enter The Achievement Index"><br>
+                </div>
+                <button id="approveAchievementbtn" onclick="approveAchievement()">Approve Achievement</button>
+            </form>
+            <form id="createAssignment" method="GET" onsubmit="return false;">
+                <input id="assignmentLecture" type="text" placeholder="Enter The Assignment"><br><br>
+                <button id="createAssignmentbtn" onclick="createAssignment()">Create Assignment</button> <br>
+                <button id="updateAssignmentStatusbtn" onclick="updateAssignmentStatus()">Update Assignment
+                    Status</button><br>
+            </form>
+            <form id="createAchievement" method="GET" onsubmit="return false;">
+                <input id="achievementStudentAddress" type="text" placeholder="Enter The Student Address"><br>
+                <input id="achievementDescription" type="text" placeholder="Enter The Description"><br>
+                <button id="createAchievementbtn" onclick="createAchievement()">Record Achievement</button><br>
+                <button id="updateAchievementStatusbtn" onclick="updateAchievementStatus()">Update Achievement
+                    Status</button><br>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        //1- connect metamask
+        let account;
+        const connectMetamask = async () => {
+            if (window.ethereum !== "undefined") {
+                const accounts = await ethereum.request({ method: "eth_requestAccounts" });
+                account = accounts[0];
+                document.getElementById("accountArea").innerHTML = account;
+            }
+        }
+
+        //2- connect to smart contract
+        const connectContract = async () => {
+            const ABI = [
+                {
+                    "inputs": [
+                        {
+                            "internalType": "address",
+                            "name": "_mentorAddress",
+                            "type": "address"
+                        }
+                    ],
+                    "name": "matchMentorStudent",
+                    "outputs": [],
+                    "stateMutability": "nonpayable",
+                    "type": "function"
+                },
+                {
+                    "inputs": [
+                        {
+                            "internalType": "string",
+                            "name": "_name",
+                            "type": "string"
+                        },
+                        {
+                            "internalType": "string",
+                            "name": "_expertise",
+                            "type": "string"
+                        }
+                    ],
+                    "name": "registerAsMentor",
+                    "outputs": [],
+                    "stateMutability": "nonpayable",
+                    "type": "function"
+                },
+                {
+                    "inputs": [
+                        {
+                            "internalType": "string",
+                            "name": "_name",
+                            "type": "string"
+                        },
+                        {
+                            "internalType": "string",
+                            "name": "_interest",
+                            "type": "string"
+                        }
+                    ],
+                    "name": "registerAsStudent",
+                    "outputs": [],
+                    "stateMutability": "nonpayable",
+                    "type": "function"
+                },
+                {
+                    "inputs": [],
+                    "name": "getMtachInfo",
+                    "outputs": [
+                        {
+                            "internalType": "address",
+                            "name": "",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "",
+                            "type": "bool"
+                        }
+                    ],
+                    "stateMutability": "view",
+                    "type": "function"
+                },
+                {
+                    "inputs": [],
+                    "name": "isRegistered",
+                    "outputs": [
+                        {
+                            "internalType": "bool",
+                            "name": "",
+                            "type": "bool"
+                        }
+                    ],
+                    "stateMutability": "view",
+                    "type": "function"
+                },
+                {
+                    "inputs": [
+                        {
+                            "internalType": "address",
+                            "name": "",
+                            "type": "address"
+                        }
+                    ],
+                    "name": "matches",
+                    "outputs": [
+                        {
+                            "internalType": "address",
+                            "name": "mentorAddress",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "studentAddress",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "isMatched",
+                            "type": "bool"
+                        }
+                    ],
+                    "stateMutability": "view",
+                    "type": "function"
+                },
+                {
+                    "inputs": [
+                        {
+                            "internalType": "address",
+                            "name": "",
+                            "type": "address"
+                        }
+                    ],
+                    "name": "mentors",
+                    "outputs": [
+                        {
+                            "internalType": "address",
+                            "name": "mentorAddress",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "string",
+                            "name": "name",
+                            "type": "string"
+                        },
+                        {
+                            "internalType": "string",
+                            "name": "expertise",
+                            "type": "string"
+                        }
+                    ],
+                    "stateMutability": "view",
+                    "type": "function"
+                },
+                {
+                    "inputs": [
+                        {
+                            "internalType": "address",
+                            "name": "",
+                            "type": "address"
+                        }
+                    ],
+                    "name": "registered",
+                    "outputs": [
+                        {
+                            "internalType": "bool",
+                            "name": "",
+                            "type": "bool"
+                        }
+                    ],
+                    "stateMutability": "view",
+                    "type": "function"
+                },
+                {
+                    "inputs": [
+                        {
+                            "internalType": "address",
+                            "name": "",
+                            "type": "address"
+                        }
+                    ],
+                    "name": "students",
+                    "outputs": [
+                        {
+                            "internalType": "address",
+                            "name": "studentAddress",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "string",
+                            "name": "name",
+                            "type": "string"
+                        },
+                        {
+                            "internalType": "string",
+                            "name": "interest",
+                            "type": "string"
+                        }
+                    ],
+                    "stateMutability": "view",
+                    "type": "function"
+                }
+            ];
+            const Address = "0x59AC753A2F64779b65277724d06382B0af94Ba75";
+            window.web3 = await new Web3(window.ethereum);
+            window.contract = await new window.web3.eth.Contract(ABI, Address);
+            document.getElementById("contractArea").innerHTML = "connected to smart contract";
+        }
+
+        //3-read data from smart contract
+        const readContract = async () => {
+            const data = await window.contract.methods.isRegistered().call();
+            document.getElementById("dataArea").innerHTML = data;
+        }
+    </script>
+
+    <script>
+
+        //2- connect to smart contract
+        const connectContractRegisterAsStudent = async () => {
+            const ABI = [
+                {
+                    "inputs": [
+                        {
+                            "internalType": "address",
+                            "name": "_mentorAddress",
+                            "type": "address"
+                        }
+                    ],
+                    "name": "matchMentorStudent",
+                    "outputs": [],
+                    "stateMutability": "nonpayable",
+                    "type": "function"
+                },
+                {
+                    "inputs": [
+                        {
+                            "internalType": "string",
+                            "name": "_name",
+                            "type": "string"
+                        },
+                        {
+                            "internalType": "string",
+                            "name": "_expertise",
+                            "type": "string"
+                        }
+                    ],
+                    "name": "registerAsMentor",
+                    "outputs": [],
+                    "stateMutability": "nonpayable",
+                    "type": "function"
+                },
+                {
+                    "inputs": [
+                        {
+                            "internalType": "string",
+                            "name": "_name",
+                            "type": "string"
+                        },
+                        {
+                            "internalType": "string",
+                            "name": "_interest",
+                            "type": "string"
+                        }
+                    ],
+                    "name": "registerAsStudent",
+                    "outputs": [],
+                    "stateMutability": "nonpayable",
+                    "type": "function"
+                },
+                {
+                    "inputs": [],
+                    "name": "getMtachInfo",
+                    "outputs": [
+                        {
+                            "internalType": "address",
+                            "name": "",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "",
+                            "type": "bool"
+                        }
+                    ],
+                    "stateMutability": "view",
+                    "type": "function"
+                },
+                {
+                    "inputs": [],
+                    "name": "isRegistered",
+                    "outputs": [
+                        {
+                            "internalType": "bool",
+                            "name": "",
+                            "type": "bool"
+                        }
+                    ],
+                    "stateMutability": "view",
+                    "type": "function"
+                },
+                {
+                    "inputs": [
+                        {
+                            "internalType": "address",
+                            "name": "",
+                            "type": "address"
+                        }
+                    ],
+                    "name": "matches",
+                    "outputs": [
+                        {
+                            "internalType": "address",
+                            "name": "mentorAddress",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "studentAddress",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "isMatched",
+                            "type": "bool"
+                        }
+                    ],
+                    "stateMutability": "view",
+                    "type": "function"
+                },
+                {
+                    "inputs": [
+                        {
+                            "internalType": "address",
+                            "name": "",
+                            "type": "address"
+                        }
+                    ],
+                    "name": "mentors",
+                    "outputs": [
+                        {
+                            "internalType": "address",
+                            "name": "mentorAddress",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "string",
+                            "name": "name",
+                            "type": "string"
+                        },
+                        {
+                            "internalType": "string",
+                            "name": "expertise",
+                            "type": "string"
+                        }
+                    ],
+                    "stateMutability": "view",
+                    "type": "function"
+                },
+                {
+                    "inputs": [
+                        {
+                            "internalType": "address",
+                            "name": "",
+                            "type": "address"
+                        }
+                    ],
+                    "name": "registered",
+                    "outputs": [
+                        {
+                            "internalType": "bool",
+                            "name": "",
+                            "type": "bool"
+                        }
+                    ],
+                    "stateMutability": "view",
+                    "type": "function"
+                },
+                {
+                    "inputs": [
+                        {
+                            "internalType": "address",
+                            "name": "",
+                            "type": "address"
+                        }
+                    ],
+                    "name": "students",
+                    "outputs": [
+                        {
+                            "internalType": "address",
+                            "name": "studentAddress",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "string",
+                            "name": "name",
+                            "type": "string"
+                        },
+                        {
+                            "internalType": "string",
+                            "name": "interest",
+                            "type": "string"
+                        }
+                    ],
+                    "stateMutability": "view",
+                    "type": "function"
+                }
+            ];
+            const Address = "0x5938525C616b88Cd87549D13D582612086f92c4A";
+            window.web3 = await new Web3(window.ethereum);
+            window.contract = await new window.web3.eth.Contract(ABI, Address);
+            document.getElementById("contractArea").innerHTML = "connected to smart contract";
+        }
+
+        //3-read data from smart contract
+        const readContract2 = async () => {
+            const data = await window.contract.methods.registerAsStudent().send();
+            document.getElementById("dataArea").innerHTML = data;
+        }
+    </script>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

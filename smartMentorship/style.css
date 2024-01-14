@@ -1,0 +1,242 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;  
+}
+
+
+header {
+    background-color: blue;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    padding: 10px;
+    text-align: center;
+    border: 3px solid black;
+}
+
+nav a {
+    color: blue;
+    text-decoration: none;
+    margin: 10px;
+}
+
+
+
+.container{
+    border: 3px solid black;
+    display: flex;
+}
+
+
+.container-left{
+    border: 3px solid black;
+    margin-right: 1px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.container-mid{
+    border: 3px solid black;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    height: 100vh;
+}
+
+.container-right{
+    border: 3px solid black;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.container-connect{
+    border: 3px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container-add{
+    border: 3px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100vh;
+}
+#matchMentorStudentbtn{
+    background-color: white;
+    color: black;
+    width: 400px;
+    height: 25px;
+    border-radius: 5px;
+    
+}
+
+
+#studentInformations {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+   
+}
+#mentorInformations {
+    
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+   
+}
+#informations {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    height: 100vh;
+    width: 100vh;
+}
+#mentorinformations {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    height: 100vh;
+    width: 100vh;
+}
+#studentName{
+    background-color: white;
+    color: black;
+    width: 400px;
+    height: 25px;
+    border-radius: 5px;
+}
+#studentAddress{
+    background-color: white;
+    color: black;
+    width: 400px;
+    height: 25px;
+    border-radius: 5px;
+}
+#studentInterest{
+    background-color: white;
+    color: black;
+    width: 400px;
+    height: 25px;
+    border-radius: 5px;
+}
+#mentorName{
+    background-color: white;
+    color: black;
+    width: 400px;
+    height: 25px;
+    border-radius: 5px;
+}
+#mentorAddress{
+    background-color: white;
+    color: black;
+    width: 400px;
+    height: 25px;
+    border-radius: 5px;
+}
+#mentorExpertise{
+    background-color: white;
+    color: black;
+    width: 400px;
+    height: 25px;
+    border-radius: 5px;
+}
+#createAssignment {
+    
+    border: 3px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    color: white;
+}
+#createAchievement {
+    
+    border: 3px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    color: white;
+}
+#lecture{
+    background-color: white;
+    color: black;
+    width: 400px;
+    height: 25px;
+    border-radius: 5px;
+
+}
+.container-match{
+    border: 3px solid black;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+#matchMentorStudentbtn{
+    background-color: white;
+    color: black;
+    width: 400px;
+    height: 25px;
+    border-radius: 5px;
+    
+}
+#approveAchievement{
+    border: 3px solid black;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    color: white;
+}
+#achievementDescription{
+    background-color: white;
+    color: black;
+    width: 400px;
+    height: 25px;
+    border-radius: 5px;
+}
+#achievementStudentAddress{
+    background-color: white;
+    color: black;
+    width: 400px;
+    height: 25px;
+    border-radius: 5px;
+
+}
+#assignmentLecture{
+    background-color: white;
+    color: black;
+    width: 400px;
+    height: 25px;
+    border-radius: 5px;
+
+}
+#achievementIndex{
+    background-color: white;
+    color: black;
+    width: 400px;
+    height: 25px;
+    border-radius: 5px;
+
+}
+
